@@ -11,6 +11,27 @@ export default function Textform(props) {
     setText(newText);
   };
 
+  const handleClearClick = () => {
+    let newText = "";
+    setText(newText);
+  };
+
+  const handleCopy = () => {
+    var text = document.getElementById("myBox");
+    text.select();
+    // text.setSelectionRange(0, 9999);
+    navigator.clipboard.writeText(text.value);
+  };
+
+  const handleExtraSpace = () => {
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(" "));
+  };
+  
+  const capitalizeFirstLetter = () =>{
+    let newText =  text.charAt(0).toUpperCase() + text.slice(1);
+    setText(newText);
+  };
   const handleOnChange = (event) => {
     setText(event.target.value);
   };
@@ -26,6 +47,11 @@ export default function Textform(props) {
       </div>
       <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to Uppercase</button>
       <button className="btn btn-primary mx-1" onClick={handleLoClick}>Convert to Lowercase</button>
+      <button className="btn btn-primary mx-1" onClick={handleClearClick}>Clear All</button>
+      <button className="btn btn-primary mx-1" onClick={handleCopy}>Copy All</button>
+      <button className="btn btn-primary mx-1" onClick={handleExtraSpace}>Remove Extra Spaces</button>
+      <button className="btn btn-primary mx-1" onClick={capitalizeFirstLetter}>Capatilize First</button>
+      
     </div>
     <div className="container my-3">
       <h2>Your text Summaray</h2>

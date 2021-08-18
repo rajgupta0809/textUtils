@@ -32,6 +32,8 @@ export default function Textform(props) {
     let newText =  text.charAt(0).toUpperCase() + text.slice(1);
     setText(newText);
   };
+
+  
   const handleOnChange = (event) => {
     setText(event.target.value);
   };
@@ -39,11 +41,11 @@ export default function Textform(props) {
   const [text, setText] = useState("");
   return (
     <>
-    <div className = "container">
+    <div className = "container" style={{color: props.mode === 'dark' ? 'white': '#042743'}}>
       <h1>{props.heading}</h1>
       <div className="mb-3">
         <textarea
-          className="form-control" value={text} onChange={handleOnChange} placeholder="Enter text here" id="myBox" rows="8"></textarea>
+          className="form-control" value={text} onChange={handleOnChange} placeholder="Enter text here" id="myBox" rows="6" style={{backgroundColor: props.mode === 'dark' ? 'grey': 'white' , color: props.mode === 'dark' ? 'white': '#042743'}}></textarea>
       </div>
       <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to Uppercase</button>
       <button className="btn btn-primary mx-1" onClick={handleLoClick}>Convert to Lowercase</button>
@@ -53,12 +55,12 @@ export default function Textform(props) {
       <button className="btn btn-primary mx-1" onClick={capitalizeFirstLetter}>Capatilize First</button>
       
     </div>
-    <div className="container my-3">
-      <h2>Your text Summaray</h2>
+    <div className="container my-3" style={{color: props.mode === 'dark' ? 'white': '#042743'}}>
+      <h2>Your text Summary</h2>
       <p>{text.split(" ").length} words and {text.length} charachters</p>
       <p>{0.008 * text.split(" ").length} minutes to read</p>
       <h2>Preview</h2>
-      <p>{text}</p>
+      <p>{text.length>0 ? text : "Enter Text in the txtbox above to preview it here."}</p>
     </div>
 
     </>

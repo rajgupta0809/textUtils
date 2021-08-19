@@ -4,16 +4,19 @@ export default function Textform(props) {
   const handleUpClick = () => {
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Converted to uppercase" , "Success");
   };
 
   const handleLoClick = () => {
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("Converted to lowercase" , "Success");
   };
 
   const handleClearClick = () => {
     let newText = "";
     setText(newText);
+    props.showAlert("Successfully cleared All" , "Success");
   };
 
   const handleCopy = () => {
@@ -21,16 +24,19 @@ export default function Textform(props) {
     text.select();
     // text.setSelectionRange(0, 9999);
     navigator.clipboard.writeText(text.value);
+    props.showAlert("Succesfully copied to Clipboard" , "Success");
   };
 
   const handleExtraSpace = () => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
+    props.showAlert("Successfully removed all extra spaces" , "Success");
   };
   
   const capitalizeFirstLetter = () =>{
     let newText =  text.charAt(0).toUpperCase() + text.slice(1);
     setText(newText);
+    props.showAlert("Capatalized first letter" , "Success");
   };
 
   
@@ -60,7 +66,7 @@ export default function Textform(props) {
       <p>{text.split(" ").length} words and {text.length} charachters</p>
       <p>{0.008 * text.split(" ").length} minutes to read</p>
       <h2>Preview</h2>
-      <p>{text.length>0 ? text : "Enter Text in the txtbox above to preview it here."}</p>
+      <p>{text.length>0 ? text : "Enter Text in the textbox above to preview it here."}</p>
     </div>
 
     </>

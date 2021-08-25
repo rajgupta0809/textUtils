@@ -60,7 +60,7 @@ function App() {
             user/home -> component2 
             we use exact due to partial*/}
           <Route exact path="/about">
-            <About/>
+            <About mode={mode}/>
           </Route>
           <Route exact path="/">
           <Textform heading="Enter Your text" showAlert = {showAlert} mode={mode}/>
